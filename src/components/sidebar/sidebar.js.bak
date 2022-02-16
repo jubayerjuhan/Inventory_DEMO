@@ -1,0 +1,130 @@
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
+import StoreMallDirectoryIcon from '@material-ui/icons/StoreMallDirectory';
+import SettingsIcon from '@material-ui/icons/Settings';
+import CalculateIcon from '@mui/icons-material/Calculate';
+import Inventory2Icon from '@mui/icons-material/Inventory2';
+import LocalAtmIcon from '@material-ui/icons/LocalAtm';
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import PeopleIcon from '@material-ui/icons/People';
+import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining';
+
+
+function Sidebar() {
+  const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
+
+  const drawerWidth = 240;
+  const icon_list = [
+      {
+            icon: StoreMallDirectoryIcon,
+            text: "Inventory",
+      },
+      {
+            icon: SettingsIcon,
+            text: "Settings",
+      },
+      {
+            icon: CalculateIcon,
+            text: "Counter",
+      },
+      {
+            icon: Inventory2Icon,
+            text: "Product",
+      },
+      {
+            icon: LocalAtmIcon,
+            text: "Expenses",
+      },
+      {
+            icon: ShoppingBasketIcon,
+            text: "Purchase",
+      },
+      {
+            icon: ShoppingCartIcon,
+            text: "Sale",
+      },
+      {
+            icon: PeopleIcon,
+            text: "Customer",
+      },
+      {
+            icon: DeliveryDiningIcon,
+            text: "Supplier",
+      }
+  ]
+
+  const list = (anchor) => (
+    <Box
+      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        {icon_list.map((icon, index) => (
+          <ListItem button key={icon.text}>
+            <ListItemIcon>
+              <icon.icon/>
+            </ListItemIcon>
+            <ListItemText primary={icon.text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+    </Box>
+  );
+
+  return (
+    <div>
+      {['left', 'right', 'top', 'bottom'].map((anchor) => (
+        <React.Fragment key={anchor}>
+          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+          <Drawer
+            sx={{
+                width: drawerWidth,
+                flexShrink: 0,
+                '& .MuiDrawer-paper': {
+                width: drawerWidth,
+                boxSizing: 'border-box',
+                },
+            }}
+            variant="permanent"
+            ModalProps={{
+                keepMounted: true,
+            }}
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+          >
+            {list(anchor)}
+          </Drawer>
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
+export default Sidebar;

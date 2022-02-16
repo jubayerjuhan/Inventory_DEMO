@@ -1,0 +1,47 @@
+.dashBoardWrapper {
+  margin: 2rem;
+}
+
+.chartAres {
+  display: flex;
+  gap: 5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.seles-item {
+  border-radius: 20px;
+  // width: 350px;
+  // background: #fff;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+}
+.seles-item h3 {
+  font-size: 25px;
+  color: white;
+  font-weight: 800;
+}
+.seles-icon i {
+  font-size: 60px;
+  color: white;
+  margin-top: 15px;
+}
+.seles-item h4 {
+  font-size: 20px;
+  color: white;
+  margin: 7px 0;
+}
+.seles-item p {
+  font-size: 14px;
+  color: white;
+  margin: 5px 0;
+}
+
+.cardWrapper {
+  display: flex;
+  gap: 4rem;
+}
