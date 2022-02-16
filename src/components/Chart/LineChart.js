@@ -20,7 +20,7 @@ export default function App({ title }) {
   };
 
   return (
-    <div style={{ width: 600, maxHeight: 600, paddingTop: 50 }}>
+    <div style={{ width: 500, maxHeight: 600, paddingTop: 50 }}>
       <h3>{title}</h3>
       <Line data={datas} />
     </div>

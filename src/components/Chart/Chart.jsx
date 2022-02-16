@@ -24,7 +24,7 @@ export default function DoughnutChart({ labels, title, data }) {
     ],
   };
   return (
-    <div style={{ width: 500, maxHeight: 600, paddingTop: 50 }}>
+    <div style={{ width: 300, maxHeight: 600, paddingTop: 50 }}>
       <h3>{title}</h3>
       <Doughnut data={datas} />
     </div>
